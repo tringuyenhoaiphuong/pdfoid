@@ -80,8 +80,8 @@ class DirectSeleniumWorker(object):
         options = webdriver.ChromeOptions()
         options.add_argument('--headless')
         options.binary_location = self.backend.chrome_path
-
-        browser = webdriver.Chrome(self.backend.chromedriver_path, options=options)
+        service = Service(executable_path=self.backend.chromedriver_path)
+        browser = webdriver.Chrome(service=service, options=options)
         browser.get('file://%s' % self.input_html_file)
 
         if wait_for is not None:
