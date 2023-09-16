@@ -79,7 +79,7 @@ class DirectSeleniumWorker(object):
     def html_to_pdf(self, *, header_template, footer_template, wait_for):
         options = webdriver.ChromeOptions()
         options.add_argument('--headless')
-        options.binary_location = self.backend.chrome_path
+        # options.binary_location = self.backend.chrome_path
         service = Service(executable_path=self.backend.chromedriver_path)
         browser = webdriver.Chrome(service=service, options=options)
         browser.get('file://%s' % self.input_html_file)
